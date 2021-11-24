@@ -1,6 +1,6 @@
 # Next.js Commerce WooCommerce Provider
 
-Integration provider for WordPress WooCommerce headless CMS. 
+Integration provider for WordPress WooCommerce headless CMS. (Work in progress, curently only list is implented)
 
 This project is framework for next.js commerce. It should be placed in **framework** folder inside commerce project (https://github.com/vercel/commerce)
 
