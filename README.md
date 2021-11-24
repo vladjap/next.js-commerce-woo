@@ -4,7 +4,7 @@ Integration provider for WordPress WooCommerce headless CMS.
 
 This project is framework for next.js commerce. It should be placed in **framework** folder inside commerce project (https://github.com/vercel/commerce)
 
-Set constanta in commerce project .env file:
+Set constants in commerce project .env file:
 * COMMERCE_PROVIDER=woo
 * NEXT_PUBLIC_WOO_SHOP_API_URL - woocommerce graphql endpoint
 * NEXT_PUBLIC_WOO_LOCAL_URL - 
