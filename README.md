@@ -17,7 +17,7 @@ Required WP plugins:
 * WPGraphQL WooCommerce (WooGraphQL)
 
 
-###Goals:
+### Goals:
 * Get products
   * List
   * Single
