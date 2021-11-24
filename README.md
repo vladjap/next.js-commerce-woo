@@ -19,7 +19,7 @@ Required WP plugins:
 
 ### Goals:
 - [ ] Get products
-  - [*] List
+  - [x] List
   - [ ] Single
   - [ ] Search
   - [ ] Recommended
