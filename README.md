@@ -18,17 +18,17 @@ Required WP plugins:
 
 
 ### Goals:
-* Get products
+- [ ] Get products
   * List
   * Single
   * Search
   * Recommended
-* Cart
-* Checkout
+- [ ] Cart
+- [ ] Checkout
   * Without payment
   * With payment (Stripe or PayPal for MVP)
-* Auth
+- [ ] Auth
   * Log in
   * Log out
   * Sign up
-* Wishlist
+- [ ] Wishlist
