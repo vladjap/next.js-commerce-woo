@@ -1,0 +1,9 @@
+{
+  "provider": "woo",
+  "features": {
+    "wishlist": false,
+    "cart": true,
+    "search": false,
+    "customerAuth": false
+  }
+}
