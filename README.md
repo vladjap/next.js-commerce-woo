@@ -19,16 +19,16 @@ Required WP plugins:
 
 ### Goals:
 - [ ] Get products
-  * List
-  * Single
-  * Search
-  * Recommended
+  - [*] List
+  - [ ] Single
+  - [ ] Search
+  - [ ] Recommended
 - [ ] Cart
 - [ ] Checkout
-  * Without payment
-  * With payment (Stripe or PayPal for MVP)
+  - [ ] Without payment
+  - [ ] With payment (Stripe or PayPal for MVP)
 - [ ] Auth
-  * Log in
-  * Log out
-  * Sign up
+  - [ ] Log in
+  - [ ] Log out
+  - [ ] Sign up
 - [ ] Wishlist
