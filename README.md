@@ -32,3 +32,8 @@ Required WP plugins:
   - [ ] Log out
   - [ ] Sign up
 - [ ] Wishlist
+
+
+##### Notes for localhost:
+If you use WordPress in localhost with change hosts file make sure to change fetch function to use default
+it doesn't work with *@vercel/fetch*

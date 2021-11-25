@@ -12,8 +12,8 @@
 // `
 
 export const getAllProductsQuery = /* GraphQL */ `
-  query getAllProducts {
-     products {
+  query getAllProducts($first: Int) {
+   products(first: $first) {
       nodes {
         id
         databaseId
@@ -22,6 +22,26 @@ export const getAllProductsQuery = /* GraphQL */ `
         slug
         image {
           sourceUrl
+        }
+        description
+        sku
+        ... on SimpleProduct {
+          price
+          regularPrice
+          salePrice
+          id
+        }
+        ... on VariableProduct {
+          price
+          regularPrice
+          salePrice
+          variations {
+            nodes {
+              price
+              regularPrice
+              salePrice
+            }
+          }
         }
       }
     }

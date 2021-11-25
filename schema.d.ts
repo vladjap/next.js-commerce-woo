@@ -18204,7 +18204,9 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars['Boolean']>
 }
 
-export type GetAllProductsQueryVariables = Exact<{ [key: string]: never }>
+export type GetAllProductsQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>
+}>
 
 export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
   products?: Maybe<
@@ -18214,7 +18216,13 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
           Maybe<
             | ({ __typename?: 'ExternalProduct' } & Pick<
                 ExternalProduct,
-                'id' | 'databaseId' | 'name' | 'onSale' | 'slug'
+                | 'id'
+                | 'databaseId'
+                | 'name'
+                | 'onSale'
+                | 'slug'
+                | 'description'
+                | 'sku'
               > & {
                   image?: Maybe<
                     { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
@@ -18222,7 +18230,13 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                 })
             | ({ __typename?: 'GroupProduct' } & Pick<
                 GroupProduct,
-                'id' | 'databaseId' | 'name' | 'onSale' | 'slug'
+                | 'id'
+                | 'databaseId'
+                | 'name'
+                | 'onSale'
+                | 'slug'
+                | 'description'
+                | 'sku'
               > & {
                   image?: Maybe<
                     { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
@@ -18238,6 +18252,8 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                 | 'name'
                 | 'onSale'
                 | 'slug'
+                | 'description'
+                | 'sku'
               > & {
                   image?: Maybe<
                     { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
@@ -18253,6 +18269,8 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                 | 'name'
                 | 'onSale'
                 | 'slug'
+                | 'description'
+                | 'sku'
               > & {
                   variations?: Maybe<
                     {

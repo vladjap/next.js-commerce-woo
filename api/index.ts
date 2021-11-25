@@ -1,6 +1,7 @@
-import type { CommerceAPI, CommerceAPIConfig } from '@commerce/api'
-import { getCommerceApi as commerceApi } from '@commerce/api'
-import createFetcher from './utils/fetch-local'
+
+import type { APIProvider, CommerceAPIConfig } from '@commerce/api'
+import { CommerceAPI, getCommerceApi as commerceApi } from '@commerce/api'
+import fetchGraphqlApi from './utils/fetch-graphql-api'
 
 import getAllPages from './operations/get-all-pages'
 import getPage from './operations/get-page'
@@ -9,7 +10,6 @@ import getCustomerWishlist from './operations/get-customer-wishlist'
 import getAllProductPaths from './operations/get-all-product-paths'
 import getAllProducts from './operations/get-all-products'
 import getProduct from './operations/get-product'
-import fetchGraphqlApi from './utils/fetch-graphql-api'
 
 export interface LocalConfig extends CommerceAPIConfig {}
 
@@ -20,8 +20,8 @@ if (!API_URL) {
     `The environment variable NEXT_PUBLIC_WOO_SHOP_API_URL is missing and it's required to access your store`
   )
 }
-const ONE_DAY = 60 * 60 * 24
 
+const ONE_DAY = 60 * 60 * 24
 const config: LocalConfig = {
   commerceUrl: API_URL,
   apiToken: '',
@@ -29,7 +29,6 @@ const config: LocalConfig = {
   customerCookie: '',
   cartCookieMaxAge: ONE_DAY * 30,
   fetch: fetchGraphqlApi,
-  // fetch: createFetcher(() => getCommerceApi().getConfig()),
 }
 
 const operations = {
@@ -49,6 +48,6 @@ export type LocalAPI<P extends Provider = Provider> = CommerceAPI<P | any>
 
 export function getCommerceApi<P extends Provider>(
   customProvider: P = provider as any
-): LocalAPI<P> {
-  return commerceApi(customProvider as any)
+): CommerceAPI<P> {
+  return commerceApi(customProvider)
 }

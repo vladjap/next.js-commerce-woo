@@ -1,19 +1,15 @@
 import { FetcherError } from '@commerce/utils/errors'
 import type { GraphQLFetcher } from '@commerce/api'
 import { getCommerceApi } from '../'
-import fetch from './fetch'
+// import fetch from './fetch' // tmp removed - not working in localhost with change host file for API source
 
 const fetchGraphqlApi: GraphQLFetcher = async (
   query: string,
   { variables, preview } = {},
   fetchOptions
 ) => {
-  console.log('a tu?');
   const config = getCommerceApi().getConfig()
-  console.log(fetchOptions, ',<')
-  console.log(query, ',<')
-  console.log(variables, ',<')
-  const res = await fetch('http://store-front.local/graphql', {
+  const res = await fetch(config.commerceUrl, {
     ...fetchOptions,
     method: 'POST',
     headers: {
@@ -25,9 +21,6 @@ const fetchGraphqlApi: GraphQLFetcher = async (
       variables,
     }),
   })
-
-  console.log('sta?aaaa');
-
 
   const json = await res.json()
   if (json.errors) {
