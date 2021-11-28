@@ -18224,8 +18224,46 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                 | 'description'
                 | 'sku'
               > & {
+                  productCategories?: Maybe<
+                    { __typename?: 'ProductToProductCategoryConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'ProductCategory' } & Pick<
+                              ProductCategory,
+                              'name'
+                            > & {
+                                image?: Maybe<
+                                  { __typename?: 'MediaItem' } & Pick<
+                                    MediaItem,
+                                    'id' | 'slug'
+                                  >
+                                >
+                              }
+                          >
+                        >
+                      >
+                    }
+                  >
+                  galleryImages?: Maybe<
+                    { __typename?: 'ProductToMediaItemConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'MediaItem' } & Pick<
+                              MediaItem,
+                              'sourceUrl' | 'title'
+                            >
+                          >
+                        >
+                      >
+                    }
+                  >
                   image?: Maybe<
-                    { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
                   >
                 })
             | ({ __typename?: 'GroupProduct' } & Pick<
@@ -18238,8 +18276,46 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                 | 'description'
                 | 'sku'
               > & {
+                  productCategories?: Maybe<
+                    { __typename?: 'ProductToProductCategoryConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'ProductCategory' } & Pick<
+                              ProductCategory,
+                              'name'
+                            > & {
+                                image?: Maybe<
+                                  { __typename?: 'MediaItem' } & Pick<
+                                    MediaItem,
+                                    'id' | 'slug'
+                                  >
+                                >
+                              }
+                          >
+                        >
+                      >
+                    }
+                  >
+                  galleryImages?: Maybe<
+                    { __typename?: 'ProductToMediaItemConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'MediaItem' } & Pick<
+                              MediaItem,
+                              'sourceUrl' | 'title'
+                            >
+                          >
+                        >
+                      >
+                    }
+                  >
                   image?: Maybe<
-                    { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
                   >
                 })
             | ({ __typename?: 'SimpleProduct' } & Pick<
@@ -18255,8 +18331,46 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                 | 'description'
                 | 'sku'
               > & {
+                  productCategories?: Maybe<
+                    { __typename?: 'ProductToProductCategoryConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'ProductCategory' } & Pick<
+                              ProductCategory,
+                              'name'
+                            > & {
+                                image?: Maybe<
+                                  { __typename?: 'MediaItem' } & Pick<
+                                    MediaItem,
+                                    'id' | 'slug'
+                                  >
+                                >
+                              }
+                          >
+                        >
+                      >
+                    }
+                  >
+                  galleryImages?: Maybe<
+                    { __typename?: 'ProductToMediaItemConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'MediaItem' } & Pick<
+                              MediaItem,
+                              'sourceUrl' | 'title'
+                            >
+                          >
+                        >
+                      >
+                    }
+                  >
                   image?: Maybe<
-                    { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
                   >
                 })
             | ({ __typename?: 'VariableProduct' } & Pick<
@@ -18282,6 +18396,64 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                             { __typename?: 'ProductVariation' } & Pick<
                               ProductVariation,
                               'price' | 'regularPrice' | 'salePrice'
+                            > & {
+                                attributes?: Maybe<
+                                  {
+                                    __typename?: 'ProductVariationToVariationAttributeConnection'
+                                  } & {
+                                    nodes?: Maybe<
+                                      Array<
+                                        Maybe<
+                                          {
+                                            __typename?: 'VariationAttribute'
+                                          } & Pick<
+                                            VariationAttribute,
+                                            | 'name'
+                                            | 'value'
+                                            | 'attributeId'
+                                            | 'label'
+                                            | 'id'
+                                          >
+                                        >
+                                      >
+                                    >
+                                  }
+                                >
+                              }
+                          >
+                        >
+                      >
+                    }
+                  >
+                  productCategories?: Maybe<
+                    { __typename?: 'ProductToProductCategoryConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'ProductCategory' } & Pick<
+                              ProductCategory,
+                              'name'
+                            > & {
+                                image?: Maybe<
+                                  { __typename?: 'MediaItem' } & Pick<
+                                    MediaItem,
+                                    'id' | 'slug'
+                                  >
+                                >
+                              }
+                          >
+                        >
+                      >
+                    }
+                  >
+                  galleryImages?: Maybe<
+                    { __typename?: 'ProductToMediaItemConnection' } & {
+                      nodes?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'MediaItem' } & Pick<
+                              MediaItem,
+                              'sourceUrl' | 'title'
                             >
                           >
                         >
@@ -18289,12 +18461,325 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                     }
                   >
                   image?: Maybe<
-                    { __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
                   >
                 })
           >
         >
       >
     }
+  >
+}
+
+export type GetProductOperationQueryVariables = Exact<{
+  id: Scalars['ID']
+}>
+
+export type GetProductOperationQuery = { __typename?: 'RootQuery' } & {
+  product?: Maybe<
+    | ({ __typename?: 'ExternalProduct' } & Pick<
+        ExternalProduct,
+        'id' | 'name' | 'sku' | 'slug' | 'description'
+      > & {
+          image?: Maybe<
+            { __typename?: 'MediaItem' } & Pick<
+              MediaItem,
+              'sourceUrl' | 'title'
+            >
+          >
+          attributes?: Maybe<
+            { __typename?: 'ProductToProductAttributeConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    | ({ __typename?: 'GlobalProductAttribute' } & Pick<
+                        GlobalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                    | ({ __typename?: 'LocalProductAttribute' } & Pick<
+                        LocalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                  >
+                >
+              >
+            }
+          >
+          productCategories?: Maybe<
+            { __typename?: 'ProductToProductCategoryConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'ProductCategory' } & Pick<
+                      ProductCategory,
+                      'name'
+                    > & {
+                        image?: Maybe<
+                          { __typename?: 'MediaItem' } & Pick<
+                            MediaItem,
+                            'id' | 'slug'
+                          >
+                        >
+                      }
+                  >
+                >
+              >
+            }
+          >
+          galleryImages?: Maybe<
+            { __typename?: 'ProductToMediaItemConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
+                  >
+                >
+              >
+            }
+          >
+        })
+    | ({ __typename?: 'GroupProduct' } & Pick<
+        GroupProduct,
+        'id' | 'name' | 'sku' | 'slug' | 'description'
+      > & {
+          image?: Maybe<
+            { __typename?: 'MediaItem' } & Pick<
+              MediaItem,
+              'sourceUrl' | 'title'
+            >
+          >
+          attributes?: Maybe<
+            { __typename?: 'ProductToProductAttributeConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    | ({ __typename?: 'GlobalProductAttribute' } & Pick<
+                        GlobalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                    | ({ __typename?: 'LocalProductAttribute' } & Pick<
+                        LocalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                  >
+                >
+              >
+            }
+          >
+          productCategories?: Maybe<
+            { __typename?: 'ProductToProductCategoryConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'ProductCategory' } & Pick<
+                      ProductCategory,
+                      'name'
+                    > & {
+                        image?: Maybe<
+                          { __typename?: 'MediaItem' } & Pick<
+                            MediaItem,
+                            'id' | 'slug'
+                          >
+                        >
+                      }
+                  >
+                >
+              >
+            }
+          >
+          galleryImages?: Maybe<
+            { __typename?: 'ProductToMediaItemConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
+                  >
+                >
+              >
+            }
+          >
+        })
+    | ({ __typename?: 'SimpleProduct' } & Pick<
+        SimpleProduct,
+        | 'price'
+        | 'regularPrice'
+        | 'salePrice'
+        | 'id'
+        | 'name'
+        | 'sku'
+        | 'slug'
+        | 'description'
+      > & {
+          image?: Maybe<
+            { __typename?: 'MediaItem' } & Pick<
+              MediaItem,
+              'sourceUrl' | 'title'
+            >
+          >
+          attributes?: Maybe<
+            { __typename?: 'ProductToProductAttributeConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    | ({ __typename?: 'GlobalProductAttribute' } & Pick<
+                        GlobalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                    | ({ __typename?: 'LocalProductAttribute' } & Pick<
+                        LocalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                  >
+                >
+              >
+            }
+          >
+          productCategories?: Maybe<
+            { __typename?: 'ProductToProductCategoryConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'ProductCategory' } & Pick<
+                      ProductCategory,
+                      'name'
+                    > & {
+                        image?: Maybe<
+                          { __typename?: 'MediaItem' } & Pick<
+                            MediaItem,
+                            'id' | 'slug'
+                          >
+                        >
+                      }
+                  >
+                >
+              >
+            }
+          >
+          galleryImages?: Maybe<
+            { __typename?: 'ProductToMediaItemConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
+                  >
+                >
+              >
+            }
+          >
+        })
+    | ({ __typename?: 'VariableProduct' } & Pick<
+        VariableProduct,
+        | 'price'
+        | 'regularPrice'
+        | 'salePrice'
+        | 'id'
+        | 'name'
+        | 'sku'
+        | 'slug'
+        | 'description'
+      > & {
+          variations?: Maybe<
+            { __typename?: 'VariableProductToProductVariationConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'ProductVariation' } & Pick<
+                      ProductVariation,
+                      'price' | 'regularPrice' | 'salePrice'
+                    > & {
+                        attributes?: Maybe<
+                          {
+                            __typename?: 'ProductVariationToVariationAttributeConnection'
+                          } & {
+                            nodes?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'VariationAttribute' } & Pick<
+                                    VariationAttribute,
+                                    'label' | 'name' | 'id' | 'attributeId'
+                                  >
+                                >
+                              >
+                            >
+                          }
+                        >
+                      }
+                  >
+                >
+              >
+            }
+          >
+          image?: Maybe<
+            { __typename?: 'MediaItem' } & Pick<
+              MediaItem,
+              'sourceUrl' | 'title'
+            >
+          >
+          attributes?: Maybe<
+            { __typename?: 'ProductToProductAttributeConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    | ({ __typename?: 'GlobalProductAttribute' } & Pick<
+                        GlobalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                    | ({ __typename?: 'LocalProductAttribute' } & Pick<
+                        LocalProductAttribute,
+                        'label' | 'name' | 'id' | 'attributeId' | 'options'
+                      >)
+                  >
+                >
+              >
+            }
+          >
+          productCategories?: Maybe<
+            { __typename?: 'ProductToProductCategoryConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'ProductCategory' } & Pick<
+                      ProductCategory,
+                      'name'
+                    > & {
+                        image?: Maybe<
+                          { __typename?: 'MediaItem' } & Pick<
+                            MediaItem,
+                            'id' | 'slug'
+                          >
+                        >
+                      }
+                  >
+                >
+              >
+            }
+          >
+          galleryImages?: Maybe<
+            { __typename?: 'ProductToMediaItemConnection' } & {
+              nodes?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'MediaItem' } & Pick<
+                      MediaItem,
+                      'sourceUrl' | 'title'
+                    >
+                  >
+                >
+              >
+            }
+          >
+        })
   >
 }

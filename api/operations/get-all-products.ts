@@ -1,8 +1,8 @@
 import { Product } from '@commerce/types/product'
 import type { OperationContext } from '@commerce/api/operations'
-import { ExternalProduct, GetAllProductsQuery } from '../../schema'
+import { ExternalProduct, GetAllProductsQuery, SimpleProduct, VariableProduct } from '../../schema'
 import type { LocalConfig, Provider } from '../index'
-import { getAllProductsQuery } from '../utils/queries/get-all-products-query'
+import { getAllProductsQuery } from '../../utils/queries/get-all-products-query'
 
 import { normalizeProduct } from '../utils/normalize'
 
@@ -35,7 +35,7 @@ export default function getAllProductsOperation({
     const { data } = await config.fetch<GetAllProductsQuery>(query, {variables: vars})
 
     return {
-      products: data.products?.nodes?.map(item => normalizeProduct(item as ExternalProduct)) || null as any,
+      products: data.products?.nodes?.map(item => normalizeProduct(item as (VariableProduct | SimpleProduct))) || null as any,
     }
   }
   return getAllProducts
