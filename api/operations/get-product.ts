@@ -34,6 +34,7 @@ export default function getProductOperation({
     const v: GetProductOperationQueryVariables = {
       id: vars!.slug || '',
     };
+    // @ts-ignore
     const { data: as } = await config.fetch<GetProductOperationQuery>(query, {variables: v})
     return {
       product: normalizeProduct(as.product),
