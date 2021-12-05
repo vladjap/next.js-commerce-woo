@@ -11,6 +11,7 @@ export type ProductVariables = { first?: number }
 
 export default function getAllProductsOperation({
   commerce,
+  // @ts-ignore
 }: OperationContext<Provider>) {
   async function getAllProducts(opts?: {
     variables?: ProductVariables

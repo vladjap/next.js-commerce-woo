@@ -1,7 +1,7 @@
 
 export const getProductQuery = /* GraphQL */ `
  query getProductOperation($id: ID!) {
-  product(id: $id) {
+  product(id: $id, idType: SLUG) {
     id
     name
     sku

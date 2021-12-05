@@ -33,7 +33,7 @@ export function normalizeProduct(item: (VariableProduct | SimpleProduct)): Produ
     id: item.id,
     name: item.name || '',
     description: item.description || '',
-    slug: item.id || '',
+    slug: item.slug || '',
     path: item.slug || '',
     images: item.image?.sourceUrl ? [{ url: item.image?.sourceUrl || '', alt: item.image?.title }, ...images] as ProductImage[] : [] as ProductImage[],
     variants: [],

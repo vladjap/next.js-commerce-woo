@@ -1456,18 +1456,6 @@ export enum ContentTypesOfCategoryEnum {
   Post = 'POST',
 }
 
-/** Allowed Content Types of the PaColor taxonomy. */
-export enum ContentTypesOfPaColorEnum {
-  /** The Type of Content object */
-  Product = 'PRODUCT',
-}
-
-/** Allowed Content Types of the PaSize taxonomy. */
-export enum ContentTypesOfPaSizeEnum {
-  /** The Type of Content object */
-  Product = 'PRODUCT',
-}
-
 /** Allowed Content Types of the PostFormat taxonomy. */
 export enum ContentTypesOfPostFormatEnum {
   /** The Type of Content object */
@@ -2096,6 +2084,8 @@ export type CouponToExcludedProductsConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -2258,6 +2248,8 @@ export type CouponToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -2481,52 +2473,6 @@ export type CreateOrderPayload = {
   clientMutationId?: Maybe<Scalars['String']>
   order?: Maybe<Order>
   orderId?: Maybe<Scalars['Int']>
-}
-
-/** Input for the createPaColor mutation */
-export type CreatePaColorInput = {
-  /** The slug that the pa_color will be an alias of */
-  aliasOf?: Maybe<Scalars['String']>
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The description of the pa_color object */
-  description?: Maybe<Scalars['String']>
-  /** The name of the pa_color object to mutate */
-  name: Scalars['String']
-  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
-  slug?: Maybe<Scalars['String']>
-}
-
-/** The payload for the createPaColor mutation */
-export type CreatePaColorPayload = {
-  __typename?: 'CreatePaColorPayload'
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The created pa_color */
-  paColor?: Maybe<PaColor>
-}
-
-/** Input for the createPaSize mutation */
-export type CreatePaSizeInput = {
-  /** The slug that the pa_size will be an alias of */
-  aliasOf?: Maybe<Scalars['String']>
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The description of the pa_size object */
-  description?: Maybe<Scalars['String']>
-  /** The name of the pa_size object to mutate */
-  name: Scalars['String']
-  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
-  slug?: Maybe<Scalars['String']>
-}
-
-/** The payload for the createPaSize mutation */
-export type CreatePaSizePayload = {
-  __typename?: 'CreatePaSizePayload'
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The created pa_size */
-  paSize?: Maybe<PaSize>
 }
 
 /** Input for the createPage mutation */
@@ -3276,44 +3222,6 @@ export type DeleteOrderPayload = {
   order?: Maybe<Order>
 }
 
-/** Input for the deletePaColor mutation */
-export type DeletePaColorInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The ID of the paColor to delete */
-  id: Scalars['ID']
-}
-
-/** The payload for the deletePaColor mutation */
-export type DeletePaColorPayload = {
-  __typename?: 'DeletePaColorPayload'
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>
-  /** The deteted term object */
-  paColor?: Maybe<PaColor>
-}
-
-/** Input for the deletePaSize mutation */
-export type DeletePaSizeInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The ID of the paSize to delete */
-  id: Scalars['ID']
-}
-
-/** The payload for the deletePaSize mutation */
-export type DeletePaSizePayload = {
-  __typename?: 'DeletePaSizePayload'
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>
-  /** The deteted term object */
-  paSize?: Maybe<PaSize>
-}
-
 /** Input for the deletePage mutation */
 export type DeletePageInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -3741,10 +3649,6 @@ export type ExternalProduct = Node &
     name?: Maybe<Scalars['String']>
     /** Is product on sale? */
     onSale?: Maybe<Scalars['Boolean']>
-    /** Connection between the Product type and the paColor type */
-    paColors?: Maybe<ProductToPaColorConnection>
-    /** Connection between the Product type and the paSize type */
-    paSizes?: Maybe<ProductToPaSizeConnection>
     /** Parent product */
     parent?: Maybe<Product>
     /** The database id of the preview node */
@@ -3878,24 +3782,6 @@ export type ExternalProductMetaDataArgs = {
   key?: Maybe<Scalars['String']>
   keysIn?: Maybe<Array<Maybe<Scalars['String']>>>
   multiple?: Maybe<Scalars['Boolean']>
-}
-
-/** A external product object */
-export type ExternalProductPaColorsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaColorConnectionWhereArgs>
-}
-
-/** A external product object */
-export type ExternalProductPaSizesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaSizeConnectionWhereArgs>
 }
 
 /** A external product object */
@@ -4301,10 +4187,6 @@ export type GroupProduct = Node &
     name?: Maybe<Scalars['String']>
     /** Is product on sale? */
     onSale?: Maybe<Scalars['Boolean']>
-    /** Connection between the Product type and the paColor type */
-    paColors?: Maybe<ProductToPaColorConnection>
-    /** Connection between the Product type and the paSize type */
-    paSizes?: Maybe<ProductToPaSizeConnection>
     /** Parent product */
     parent?: Maybe<Product>
     /** The database id of the preview node */
@@ -4432,24 +4314,6 @@ export type GroupProductMetaDataArgs = {
   key?: Maybe<Scalars['String']>
   keysIn?: Maybe<Array<Maybe<Scalars['String']>>>
   multiple?: Maybe<Scalars['Boolean']>
-}
-
-/** A group product object */
-export type GroupProductPaColorsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaColorConnectionWhereArgs>
-}
-
-/** A group product object */
-export type GroupProductPaSizesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaSizeConnectionWhereArgs>
 }
 
 /** A group product object */
@@ -4624,6 +4488,8 @@ export type GroupProductToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -6490,748 +6356,6 @@ export type OrdersOrderbyInput = {
   order?: Maybe<OrderEnum>
 }
 
-/** The paColor type */
-export type PaColor = Node &
-  TermNode &
-  UniformResourceIdentifiable &
-  DatabaseIdentifier & {
-    __typename?: 'PaColor'
-    /** Connection between the paColor type and the ContentNode type */
-    contentNodes?: Maybe<PaColorToContentNodeConnection>
-    /** The number of objects connected to the object */
-    count?: Maybe<Scalars['Int']>
-    /** The unique identifier stored in the database */
-    databaseId: Scalars['Int']
-    /** The description of the object */
-    description?: Maybe<Scalars['String']>
-    /** Connection between the TermNode type and the EnqueuedScript type */
-    enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>
-    /** Connection between the TermNode type and the EnqueuedStylesheet type */
-    enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>
-    /** The unique resource identifier path */
-    id: Scalars['ID']
-    /** Whether the node is a Content Node */
-    isContentNode: Scalars['Boolean']
-    /** Whether the object is restricted from the current viewer */
-    isRestricted?: Maybe<Scalars['Boolean']>
-    /** Whether the node is a Term */
-    isTermNode: Scalars['Boolean']
-    /** The link to the term */
-    link?: Maybe<Scalars['String']>
-    /** The human friendly name of the object. */
-    name?: Maybe<Scalars['String']>
-    /**
-     * The id field matches the WP_Post-&gt;ID field.
-     * @deprecated Deprecated in favor of databaseId
-     */
-    paColorId?: Maybe<Scalars['Int']>
-    /** Connection between the PaColor type and the Product type */
-    products?: Maybe<PaColorToProductConnection>
-    /** An alphanumeric identifier for the object unique to its type. */
-    slug?: Maybe<Scalars['String']>
-    /** Connection between the paColor type and the Taxonomy type */
-    taxonomy?: Maybe<PaColorToTaxonomyConnectionEdge>
-    /** The ID of the term group that this term object belongs to */
-    termGroupId?: Maybe<Scalars['Int']>
-    /** The taxonomy ID that the object is associated with */
-    termTaxonomyId?: Maybe<Scalars['Int']>
-    /** The unique resource identifier path */
-    uri?: Maybe<Scalars['String']>
-    /** Connection between the PaColor type and the ProductVariation type */
-    variations?: Maybe<PaColorToProductVariationConnection>
-  }
-
-/** The paColor type */
-export type PaColorContentNodesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<PaColorToContentNodeConnectionWhereArgs>
-}
-
-/** The paColor type */
-export type PaColorEnqueuedScriptsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-}
-
-/** The paColor type */
-export type PaColorEnqueuedStylesheetsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-}
-
-/** The paColor type */
-export type PaColorProductsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<PaColorToProductConnectionWhereArgs>
-}
-
-/** The paColor type */
-export type PaColorVariationsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<PaColorToProductVariationConnectionWhereArgs>
-}
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum PaColorIdType {
-  /** The Database ID for the node */
-  DatabaseId = 'DATABASE_ID',
-  /** The hashed Global ID */
-  Id = 'ID',
-  /** The name of the node */
-  Name = 'NAME',
-  /** Url friendly name of the node */
-  Slug = 'SLUG',
-  /** The URI for the node */
-  Uri = 'URI',
-}
-
-/** Connection between the paColor type and the ContentNode type */
-export type PaColorToContentNodeConnection = {
-  __typename?: 'PaColorToContentNodeConnection'
-  /** Edges for the PaColorToContentNodeConnection connection */
-  edges?: Maybe<Array<Maybe<PaColorToContentNodeConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<ContentNode>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type PaColorToContentNodeConnectionEdge = {
-  __typename?: 'PaColorToContentNodeConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<ContentNode>
-}
-
-/** Arguments for filtering the PaColorToContentNodeConnection connection */
-export type PaColorToContentNodeConnectionWhereArgs = {
-  /** The Types of content to filter */
-  contentTypes?: Maybe<Array<Maybe<ContentTypesOfPaColorEnum>>>
-  /** Filter the connection based on dates */
-  dateQuery?: Maybe<DateQueryInput>
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: Maybe<Scalars['Boolean']>
-  /** Specific ID of the object */
-  id?: Maybe<Scalars['Int']>
-  /** Array of IDs for the objects to retrieve */
-  in?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Get objects with a specific mimeType property */
-  mimeType?: Maybe<MimeTypeEnum>
-  /** Slug / post_name of the object */
-  name?: Maybe<Scalars['String']>
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: Maybe<Scalars['ID']>
-  /** Specify objects whose parent is in an array */
-  parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Show posts with a specific password. */
-  password?: Maybe<Scalars['String']>
-  /** Show Posts based on a keyword search */
-  search?: Maybe<Scalars['String']>
-  /** Retrieve posts where post status is in an array. */
-  stati?: Maybe<Array<Maybe<PostStatusEnum>>>
-  /** Show posts with a specific status. */
-  status?: Maybe<PostStatusEnum>
-  /** Title of the object */
-  title?: Maybe<Scalars['String']>
-}
-
-/** Connection between the PaColor type and the Product type */
-export type PaColorToProductConnection = {
-  __typename?: 'PaColorToProductConnection'
-  /** Edges for the PaColorToProductConnection connection */
-  edges?: Maybe<Array<Maybe<PaColorToProductConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Product>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type PaColorToProductConnectionEdge = {
-  __typename?: 'PaColorToProductConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<Product>
-}
-
-/** Arguments for filtering the PaColorToProductConnection connection */
-export type PaColorToProductConnectionWhereArgs = {
-  /** Limit result set to products with a specific attribute. Use the taxonomy name/attribute slug. */
-  attribute?: Maybe<Scalars['String']>
-  /** Limit result set to products with a specific attribute term ID (required an assigned attribute). */
-  attributeTerm?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  category?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  categoryId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of category IDs. */
-  categoryIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of category IDs. */
-  categoryIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a group of specific categories by name. */
-  categoryIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a group of specific categories by name. */
-  categoryNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Filter the connection based on dates. */
-  dateQuery?: Maybe<DateQueryInput>
-  /** Ensure result set excludes specific IDs. */
-  exclude?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to featured products. */
-  featured?: Maybe<Scalars['Boolean']>
-  /** Limit result set to specific ids. */
-  include?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a maximum price. */
-  maxPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products based on a minimum price. */
-  minPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products on sale. */
-  onSale?: Maybe<Scalars['Boolean']>
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<ProductsOrderbyInput>>>
-  /** Use ID to return only children. Use 0 to return only top-level items. */
-  parent?: Maybe<Scalars['Int']>
-  /** Specify objects whose parent is in an array. */
-  parentIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Specify objects whose parent is not in an array. */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a keyword search. */
-  search?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific shipping class ID. */
-  shippingClassId?: Maybe<Scalars['Int']>
-  /** Limit result set to products with specific SKU(s). Use commas to separate. */
-  sku?: Maybe<Scalars['String']>
-  /** Limit result set to products with specific slugs. */
-  slugIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products assigned a specific status. */
-  status?: Maybe<Scalars['String']>
-  /** Limit result set to products in stock or out of stock. */
-  stockStatus?: Maybe<Array<Maybe<StockStatusEnum>>>
-  /** Limit result types to types supported by WooGraphQL. */
-  supportedTypesOnly?: Maybe<Scalars['Boolean']>
-  /** Limit result set to products assigned a specific tag name. */
-  tag?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific tag ID. */
-  tagId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of tag IDs. */
-  tagIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of tag IDs. */
-  tagIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a specific group of tags by name. */
-  tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a specific group of tags by name. */
-  tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set with complex set of taxonomy filters. */
-  taxonomyFilter?: Maybe<ProductTaxonomyInput>
-  /** Limit result set to products assigned a specific type. */
-  type?: Maybe<ProductTypesEnum>
-  /** Limit result set to products assigned to a group of specific types. */
-  typeIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products not assigned to a group of specific types. */
-  typeNotIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products with a specific visibility level. */
-  visibility?: Maybe<CatalogVisibilityEnum>
-}
-
-/** Connection between the PaColor type and the ProductVariation type */
-export type PaColorToProductVariationConnection = {
-  __typename?: 'PaColorToProductVariationConnection'
-  /** Edges for the PaColorToProductVariationConnection connection */
-  edges?: Maybe<Array<Maybe<PaColorToProductVariationConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<ProductVariation>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type PaColorToProductVariationConnectionEdge = {
-  __typename?: 'PaColorToProductVariationConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<ProductVariation>
-}
-
-/** Arguments for filtering the PaColorToProductVariationConnection connection */
-export type PaColorToProductVariationConnectionWhereArgs = {
-  /** Limit result set to products with a specific attribute. Use the taxonomy name/attribute slug. */
-  attribute?: Maybe<Scalars['String']>
-  /** Limit result set to products with a specific attribute term ID (required an assigned attribute). */
-  attributeTerm?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  category?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  categoryId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of category IDs. */
-  categoryIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of category IDs. */
-  categoryIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a group of specific categories by name. */
-  categoryIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a group of specific categories by name. */
-  categoryNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Filter the connection based on dates. */
-  dateQuery?: Maybe<DateQueryInput>
-  /** Ensure result set excludes specific IDs. */
-  exclude?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to featured products. */
-  featured?: Maybe<Scalars['Boolean']>
-  /** Limit result set to specific ids. */
-  include?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a maximum price. */
-  maxPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products based on a minimum price. */
-  minPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products on sale. */
-  onSale?: Maybe<Scalars['Boolean']>
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<ProductsOrderbyInput>>>
-  /** Use ID to return only children. Use 0 to return only top-level items. */
-  parent?: Maybe<Scalars['Int']>
-  /** Specify objects whose parent is in an array. */
-  parentIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Specify objects whose parent is not in an array. */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a keyword search. */
-  search?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific shipping class ID. */
-  shippingClassId?: Maybe<Scalars['Int']>
-  /** Limit result set to products with specific SKU(s). Use commas to separate. */
-  sku?: Maybe<Scalars['String']>
-  /** Limit result set to products with specific slugs. */
-  slugIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products assigned a specific status. */
-  status?: Maybe<Scalars['String']>
-  /** Limit result set to products in stock or out of stock. */
-  stockStatus?: Maybe<Array<Maybe<StockStatusEnum>>>
-  /** Limit result types to types supported by WooGraphQL. */
-  supportedTypesOnly?: Maybe<Scalars['Boolean']>
-  /** Limit result set to products assigned a specific tag name. */
-  tag?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific tag ID. */
-  tagId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of tag IDs. */
-  tagIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of tag IDs. */
-  tagIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a specific group of tags by name. */
-  tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a specific group of tags by name. */
-  tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set with complex set of taxonomy filters. */
-  taxonomyFilter?: Maybe<ProductTaxonomyInput>
-  /** Limit result set to products assigned a specific type. */
-  type?: Maybe<ProductTypesEnum>
-  /** Limit result set to products assigned to a group of specific types. */
-  typeIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products not assigned to a group of specific types. */
-  typeNotIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products with a specific visibility level. */
-  visibility?: Maybe<CatalogVisibilityEnum>
-}
-
-/** Connection between the paColor type and the Taxonomy type */
-export type PaColorToTaxonomyConnectionEdge = {
-  __typename?: 'PaColorToTaxonomyConnectionEdge'
-  /** The node of the connection, without the edges */
-  node?: Maybe<Taxonomy>
-}
-
-/** The paSize type */
-export type PaSize = Node &
-  TermNode &
-  UniformResourceIdentifiable &
-  DatabaseIdentifier & {
-    __typename?: 'PaSize'
-    /** Connection between the paSize type and the ContentNode type */
-    contentNodes?: Maybe<PaSizeToContentNodeConnection>
-    /** The number of objects connected to the object */
-    count?: Maybe<Scalars['Int']>
-    /** The unique identifier stored in the database */
-    databaseId: Scalars['Int']
-    /** The description of the object */
-    description?: Maybe<Scalars['String']>
-    /** Connection between the TermNode type and the EnqueuedScript type */
-    enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>
-    /** Connection between the TermNode type and the EnqueuedStylesheet type */
-    enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>
-    /** The unique resource identifier path */
-    id: Scalars['ID']
-    /** Whether the node is a Content Node */
-    isContentNode: Scalars['Boolean']
-    /** Whether the object is restricted from the current viewer */
-    isRestricted?: Maybe<Scalars['Boolean']>
-    /** Whether the node is a Term */
-    isTermNode: Scalars['Boolean']
-    /** The link to the term */
-    link?: Maybe<Scalars['String']>
-    /** The human friendly name of the object. */
-    name?: Maybe<Scalars['String']>
-    /**
-     * The id field matches the WP_Post-&gt;ID field.
-     * @deprecated Deprecated in favor of databaseId
-     */
-    paSizeId?: Maybe<Scalars['Int']>
-    /** Connection between the PaSize type and the Product type */
-    products?: Maybe<PaSizeToProductConnection>
-    /** An alphanumeric identifier for the object unique to its type. */
-    slug?: Maybe<Scalars['String']>
-    /** Connection between the paSize type and the Taxonomy type */
-    taxonomy?: Maybe<PaSizeToTaxonomyConnectionEdge>
-    /** The ID of the term group that this term object belongs to */
-    termGroupId?: Maybe<Scalars['Int']>
-    /** The taxonomy ID that the object is associated with */
-    termTaxonomyId?: Maybe<Scalars['Int']>
-    /** The unique resource identifier path */
-    uri?: Maybe<Scalars['String']>
-    /** Connection between the PaSize type and the ProductVariation type */
-    variations?: Maybe<PaSizeToProductVariationConnection>
-  }
-
-/** The paSize type */
-export type PaSizeContentNodesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<PaSizeToContentNodeConnectionWhereArgs>
-}
-
-/** The paSize type */
-export type PaSizeEnqueuedScriptsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-}
-
-/** The paSize type */
-export type PaSizeEnqueuedStylesheetsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-}
-
-/** The paSize type */
-export type PaSizeProductsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<PaSizeToProductConnectionWhereArgs>
-}
-
-/** The paSize type */
-export type PaSizeVariationsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<PaSizeToProductVariationConnectionWhereArgs>
-}
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum PaSizeIdType {
-  /** The Database ID for the node */
-  DatabaseId = 'DATABASE_ID',
-  /** The hashed Global ID */
-  Id = 'ID',
-  /** The name of the node */
-  Name = 'NAME',
-  /** Url friendly name of the node */
-  Slug = 'SLUG',
-  /** The URI for the node */
-  Uri = 'URI',
-}
-
-/** Connection between the paSize type and the ContentNode type */
-export type PaSizeToContentNodeConnection = {
-  __typename?: 'PaSizeToContentNodeConnection'
-  /** Edges for the PaSizeToContentNodeConnection connection */
-  edges?: Maybe<Array<Maybe<PaSizeToContentNodeConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<ContentNode>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type PaSizeToContentNodeConnectionEdge = {
-  __typename?: 'PaSizeToContentNodeConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<ContentNode>
-}
-
-/** Arguments for filtering the PaSizeToContentNodeConnection connection */
-export type PaSizeToContentNodeConnectionWhereArgs = {
-  /** The Types of content to filter */
-  contentTypes?: Maybe<Array<Maybe<ContentTypesOfPaSizeEnum>>>
-  /** Filter the connection based on dates */
-  dateQuery?: Maybe<DateQueryInput>
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: Maybe<Scalars['Boolean']>
-  /** Specific ID of the object */
-  id?: Maybe<Scalars['Int']>
-  /** Array of IDs for the objects to retrieve */
-  in?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Get objects with a specific mimeType property */
-  mimeType?: Maybe<MimeTypeEnum>
-  /** Slug / post_name of the object */
-  name?: Maybe<Scalars['String']>
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: Maybe<Scalars['ID']>
-  /** Specify objects whose parent is in an array */
-  parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Show posts with a specific password. */
-  password?: Maybe<Scalars['String']>
-  /** Show Posts based on a keyword search */
-  search?: Maybe<Scalars['String']>
-  /** Retrieve posts where post status is in an array. */
-  stati?: Maybe<Array<Maybe<PostStatusEnum>>>
-  /** Show posts with a specific status. */
-  status?: Maybe<PostStatusEnum>
-  /** Title of the object */
-  title?: Maybe<Scalars['String']>
-}
-
-/** Connection between the PaSize type and the Product type */
-export type PaSizeToProductConnection = {
-  __typename?: 'PaSizeToProductConnection'
-  /** Edges for the PaSizeToProductConnection connection */
-  edges?: Maybe<Array<Maybe<PaSizeToProductConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Product>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type PaSizeToProductConnectionEdge = {
-  __typename?: 'PaSizeToProductConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<Product>
-}
-
-/** Arguments for filtering the PaSizeToProductConnection connection */
-export type PaSizeToProductConnectionWhereArgs = {
-  /** Limit result set to products with a specific attribute. Use the taxonomy name/attribute slug. */
-  attribute?: Maybe<Scalars['String']>
-  /** Limit result set to products with a specific attribute term ID (required an assigned attribute). */
-  attributeTerm?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  category?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  categoryId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of category IDs. */
-  categoryIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of category IDs. */
-  categoryIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a group of specific categories by name. */
-  categoryIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a group of specific categories by name. */
-  categoryNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Filter the connection based on dates. */
-  dateQuery?: Maybe<DateQueryInput>
-  /** Ensure result set excludes specific IDs. */
-  exclude?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to featured products. */
-  featured?: Maybe<Scalars['Boolean']>
-  /** Limit result set to specific ids. */
-  include?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a maximum price. */
-  maxPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products based on a minimum price. */
-  minPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products on sale. */
-  onSale?: Maybe<Scalars['Boolean']>
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<ProductsOrderbyInput>>>
-  /** Use ID to return only children. Use 0 to return only top-level items. */
-  parent?: Maybe<Scalars['Int']>
-  /** Specify objects whose parent is in an array. */
-  parentIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Specify objects whose parent is not in an array. */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a keyword search. */
-  search?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific shipping class ID. */
-  shippingClassId?: Maybe<Scalars['Int']>
-  /** Limit result set to products with specific SKU(s). Use commas to separate. */
-  sku?: Maybe<Scalars['String']>
-  /** Limit result set to products with specific slugs. */
-  slugIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products assigned a specific status. */
-  status?: Maybe<Scalars['String']>
-  /** Limit result set to products in stock or out of stock. */
-  stockStatus?: Maybe<Array<Maybe<StockStatusEnum>>>
-  /** Limit result types to types supported by WooGraphQL. */
-  supportedTypesOnly?: Maybe<Scalars['Boolean']>
-  /** Limit result set to products assigned a specific tag name. */
-  tag?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific tag ID. */
-  tagId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of tag IDs. */
-  tagIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of tag IDs. */
-  tagIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a specific group of tags by name. */
-  tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a specific group of tags by name. */
-  tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set with complex set of taxonomy filters. */
-  taxonomyFilter?: Maybe<ProductTaxonomyInput>
-  /** Limit result set to products assigned a specific type. */
-  type?: Maybe<ProductTypesEnum>
-  /** Limit result set to products assigned to a group of specific types. */
-  typeIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products not assigned to a group of specific types. */
-  typeNotIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products with a specific visibility level. */
-  visibility?: Maybe<CatalogVisibilityEnum>
-}
-
-/** Connection between the PaSize type and the ProductVariation type */
-export type PaSizeToProductVariationConnection = {
-  __typename?: 'PaSizeToProductVariationConnection'
-  /** Edges for the PaSizeToProductVariationConnection connection */
-  edges?: Maybe<Array<Maybe<PaSizeToProductVariationConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<ProductVariation>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type PaSizeToProductVariationConnectionEdge = {
-  __typename?: 'PaSizeToProductVariationConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<ProductVariation>
-}
-
-/** Arguments for filtering the PaSizeToProductVariationConnection connection */
-export type PaSizeToProductVariationConnectionWhereArgs = {
-  /** Limit result set to products with a specific attribute. Use the taxonomy name/attribute slug. */
-  attribute?: Maybe<Scalars['String']>
-  /** Limit result set to products with a specific attribute term ID (required an assigned attribute). */
-  attributeTerm?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  category?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific category name. */
-  categoryId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of category IDs. */
-  categoryIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of category IDs. */
-  categoryIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a group of specific categories by name. */
-  categoryIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a group of specific categories by name. */
-  categoryNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Filter the connection based on dates. */
-  dateQuery?: Maybe<DateQueryInput>
-  /** Ensure result set excludes specific IDs. */
-  exclude?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to featured products. */
-  featured?: Maybe<Scalars['Boolean']>
-  /** Limit result set to specific ids. */
-  include?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a maximum price. */
-  maxPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products based on a minimum price. */
-  minPrice?: Maybe<Scalars['Float']>
-  /** Limit result set to products on sale. */
-  onSale?: Maybe<Scalars['Boolean']>
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<ProductsOrderbyInput>>>
-  /** Use ID to return only children. Use 0 to return only top-level items. */
-  parent?: Maybe<Scalars['Int']>
-  /** Specify objects whose parent is in an array. */
-  parentIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Specify objects whose parent is not in an array. */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products based on a keyword search. */
-  search?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific shipping class ID. */
-  shippingClassId?: Maybe<Scalars['Int']>
-  /** Limit result set to products with specific SKU(s). Use commas to separate. */
-  sku?: Maybe<Scalars['String']>
-  /** Limit result set to products with specific slugs. */
-  slugIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products assigned a specific status. */
-  status?: Maybe<Scalars['String']>
-  /** Limit result set to products in stock or out of stock. */
-  stockStatus?: Maybe<Array<Maybe<StockStatusEnum>>>
-  /** Limit result types to types supported by WooGraphQL. */
-  supportedTypesOnly?: Maybe<Scalars['Boolean']>
-  /** Limit result set to products assigned a specific tag name. */
-  tag?: Maybe<Scalars['String']>
-  /** Limit result set to products assigned a specific tag ID. */
-  tagId?: Maybe<Scalars['Int']>
-  /** Limit result set to products assigned to a specific group of tag IDs. */
-  tagIdIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products not assigned to a specific group of tag IDs. */
-  tagIdNotIn?: Maybe<Array<Maybe<Scalars['Int']>>>
-  /** Limit result set to products assigned to a specific group of tags by name. */
-  tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set to products not assigned to a specific group of tags by name. */
-  tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Limit result set with complex set of taxonomy filters. */
-  taxonomyFilter?: Maybe<ProductTaxonomyInput>
-  /** Limit result set to products assigned a specific type. */
-  type?: Maybe<ProductTypesEnum>
-  /** Limit result set to products assigned to a group of specific types. */
-  typeIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products not assigned to a group of specific types. */
-  typeNotIn?: Maybe<Array<Maybe<ProductTypesEnum>>>
-  /** Limit result set to products with a specific visibility level. */
-  visibility?: Maybe<CatalogVisibilityEnum>
-}
-
-/** Connection between the paSize type and the Taxonomy type */
-export type PaSizeToTaxonomyConnectionEdge = {
-  __typename?: 'PaSizeToTaxonomyConnectionEdge'
-  /** The node of the connection, without the edges */
-  node?: Maybe<Taxonomy>
-}
-
 /** The page type */
 export type Page = Node &
   ContentNode &
@@ -8794,10 +7918,6 @@ export type Product = {
   name?: Maybe<Scalars['String']>
   /** Is product on sale? */
   onSale?: Maybe<Scalars['Boolean']>
-  /** Connection between the Product type and the paColor type */
-  paColors?: Maybe<ProductToPaColorConnection>
-  /** Connection between the Product type and the paSize type */
-  paSizes?: Maybe<ProductToPaSizeConnection>
   /** Parent product */
   parent?: Maybe<Product>
   /** Connection between the Product type and the productCategory type */
@@ -8884,24 +8004,6 @@ export type ProductMetaDataArgs = {
   key?: Maybe<Scalars['String']>
   keysIn?: Maybe<Array<Maybe<Scalars['String']>>>
   multiple?: Maybe<Scalars['Boolean']>
-}
-
-/** Product object */
-export type ProductPaColorsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaColorConnectionWhereArgs>
-}
-
-/** Product object */
-export type ProductPaSizesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaSizeConnectionWhereArgs>
 }
 
 /** Product object */
@@ -9409,6 +8511,8 @@ export type ProductCategoryToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -9705,6 +8809,8 @@ export type ProductTagToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -9726,8 +8832,6 @@ export type ProductTagToTaxonomyConnectionEdge = {
 
 /** Product taxonomies */
 export enum ProductTaxonomyEnum {
-  Pacolor = 'PACOLOR',
-  Pasize = 'PASIZE',
   Productcategory = 'PRODUCTCATEGORY',
   Producttag = 'PRODUCTTAG',
   Producttype = 'PRODUCTTYPE',
@@ -9959,134 +9063,6 @@ export type ProductToMediaItemConnectionWhereArgs = {
   title?: Maybe<Scalars['String']>
 }
 
-/** Connection between the Product type and the paColor type */
-export type ProductToPaColorConnection = {
-  __typename?: 'ProductToPaColorConnection'
-  /** Edges for the ProductToPaColorConnection connection */
-  edges?: Maybe<Array<Maybe<ProductToPaColorConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<PaColor>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type ProductToPaColorConnectionEdge = {
-  __typename?: 'ProductToPaColorConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<PaColor>
-}
-
-/** Arguments for filtering the ProductToPaColorConnection connection */
-export type ProductToPaColorConnectionWhereArgs = {
-  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
-  cacheDomain?: Maybe<Scalars['String']>
-  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
-  childOf?: Maybe<Scalars['Int']>
-  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
-  childless?: Maybe<Scalars['Boolean']>
-  /** Retrieve terms where the description is LIKE the input value. Default empty. */
-  descriptionLike?: Maybe<Scalars['String']>
-  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
-  exclude?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
-  excludeTree?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
-  hideEmpty?: Maybe<Scalars['Boolean']>
-  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
-  hierarchical?: Maybe<Scalars['Boolean']>
-  /** Array of term ids to include. Default empty array. */
-  include?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of names to return term(s) for. Default empty. */
-  name?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Retrieve terms where the name is LIKE the input value. Default empty. */
-  nameLike?: Maybe<Scalars['String']>
-  /** Array of object IDs. Results will be limited to terms associated with these objects. */
-  objectIds?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Direction the connection should be ordered in */
-  order?: Maybe<OrderEnum>
-  /** Field(s) to order terms by. Defaults to 'name'. */
-  orderby?: Maybe<TermObjectsConnectionOrderbyEnum>
-  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
-  padCounts?: Maybe<Scalars['Boolean']>
-  /** Parent term ID to retrieve direct-child terms of. Default empty. */
-  parent?: Maybe<Scalars['Int']>
-  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
-  search?: Maybe<Scalars['String']>
-  /** Array of slugs to return term(s) for. Default empty. */
-  slug?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to prime meta caches for matched terms. Default true. */
-  updateTermMetaCache?: Maybe<Scalars['Boolean']>
-}
-
-/** Connection between the Product type and the paSize type */
-export type ProductToPaSizeConnection = {
-  __typename?: 'ProductToPaSizeConnection'
-  /** Edges for the ProductToPaSizeConnection connection */
-  edges?: Maybe<Array<Maybe<ProductToPaSizeConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<PaSize>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type ProductToPaSizeConnectionEdge = {
-  __typename?: 'ProductToPaSizeConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<PaSize>
-}
-
-/** Arguments for filtering the ProductToPaSizeConnection connection */
-export type ProductToPaSizeConnectionWhereArgs = {
-  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
-  cacheDomain?: Maybe<Scalars['String']>
-  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
-  childOf?: Maybe<Scalars['Int']>
-  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
-  childless?: Maybe<Scalars['Boolean']>
-  /** Retrieve terms where the description is LIKE the input value. Default empty. */
-  descriptionLike?: Maybe<Scalars['String']>
-  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
-  exclude?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
-  excludeTree?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
-  hideEmpty?: Maybe<Scalars['Boolean']>
-  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
-  hierarchical?: Maybe<Scalars['Boolean']>
-  /** Array of term ids to include. Default empty array. */
-  include?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of names to return term(s) for. Default empty. */
-  name?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Retrieve terms where the name is LIKE the input value. Default empty. */
-  nameLike?: Maybe<Scalars['String']>
-  /** Array of object IDs. Results will be limited to terms associated with these objects. */
-  objectIds?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Direction the connection should be ordered in */
-  order?: Maybe<OrderEnum>
-  /** Field(s) to order terms by. Defaults to 'name'. */
-  orderby?: Maybe<TermObjectsConnectionOrderbyEnum>
-  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
-  padCounts?: Maybe<Scalars['Boolean']>
-  /** Parent term ID to retrieve direct-child terms of. Default empty. */
-  parent?: Maybe<Scalars['Int']>
-  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
-  search?: Maybe<Scalars['String']>
-  /** Array of slugs to return term(s) for. Default empty. */
-  slug?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to prime meta caches for matched terms. Default true. */
-  updateTermMetaCache?: Maybe<Scalars['Boolean']>
-}
-
 /** Connection between the Product type and the ProductAttribute type */
 export type ProductToProductAttributeConnection = {
   __typename?: 'ProductToProductAttributeConnection'
@@ -10265,6 +9241,8 @@ export type ProductToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -10555,6 +9533,8 @@ export type ProductToUpsellConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -11497,10 +10477,6 @@ export type RootMutation = {
   createMediaItem?: Maybe<CreateMediaItemPayload>
   /** The payload for the createOrder mutation */
   createOrder?: Maybe<CreateOrderPayload>
-  /** The payload for the createPaColor mutation */
-  createPaColor?: Maybe<CreatePaColorPayload>
-  /** The payload for the createPaSize mutation */
-  createPaSize?: Maybe<CreatePaSizePayload>
   /** The payload for the createPage mutation */
   createPage?: Maybe<CreatePagePayload>
   /** The payload for the createPost mutation */
@@ -11533,10 +10509,6 @@ export type RootMutation = {
   deleteOrder?: Maybe<DeleteOrderPayload>
   /** The payload for the deleteOrderItems mutation */
   deleteOrderItems?: Maybe<DeleteOrderItemsPayload>
-  /** The payload for the deletePaColor mutation */
-  deletePaColor?: Maybe<DeletePaColorPayload>
-  /** The payload for the deletePaSize mutation */
-  deletePaSize?: Maybe<DeletePaSizePayload>
   /** The payload for the deletePage mutation */
   deletePage?: Maybe<DeletePagePayload>
   /** The payload for the deletePost mutation */
@@ -11597,10 +10569,6 @@ export type RootMutation = {
   updateMediaItem?: Maybe<UpdateMediaItemPayload>
   /** The payload for the updateOrder mutation */
   updateOrder?: Maybe<UpdateOrderPayload>
-  /** The payload for the UpdatePaColor mutation */
-  updatePaColor?: Maybe<UpdatePaColorPayload>
-  /** The payload for the UpdatePaSize mutation */
-  updatePaSize?: Maybe<UpdatePaSizePayload>
   /** The payload for the updatePage mutation */
   updatePage?: Maybe<UpdatePagePayload>
   /** The payload for the updatePost mutation */
@@ -11682,16 +10650,6 @@ export type RootMutationCreateOrderArgs = {
 }
 
 /** The root mutation */
-export type RootMutationCreatePaColorArgs = {
-  input: CreatePaColorInput
-}
-
-/** The root mutation */
-export type RootMutationCreatePaSizeArgs = {
-  input: CreatePaSizeInput
-}
-
-/** The root mutation */
 export type RootMutationCreatePageArgs = {
   input: CreatePageInput
 }
@@ -11769,16 +10727,6 @@ export type RootMutationDeleteOrderArgs = {
 /** The root mutation */
 export type RootMutationDeleteOrderItemsArgs = {
   input: DeleteOrderItemsInput
-}
-
-/** The root mutation */
-export type RootMutationDeletePaColorArgs = {
-  input: DeletePaColorInput
-}
-
-/** The root mutation */
-export type RootMutationDeletePaSizeArgs = {
-  input: DeletePaSizeInput
 }
 
 /** The root mutation */
@@ -11932,16 +10880,6 @@ export type RootMutationUpdateOrderArgs = {
 }
 
 /** The root mutation */
-export type RootMutationUpdatePaColorArgs = {
-  input: UpdatePaColorInput
-}
-
-/** The root mutation */
-export type RootMutationUpdatePaSizeArgs = {
-  input: UpdatePaSizeInput
-}
-
-/** The root mutation */
 export type RootMutationUpdatePageArgs = {
   input: UpdatePageInput
 }
@@ -12079,14 +11017,6 @@ export type RootQuery = {
   order?: Maybe<Order>
   /** Connection between the RootQuery type and the Order type */
   orders?: Maybe<RootQueryToOrderConnection>
-  /** A 0bject */
-  paColor?: Maybe<PaColor>
-  /** Connection between the RootQuery type and the paColor type */
-  paColors?: Maybe<RootQueryToPaColorConnection>
-  /** A 0bject */
-  paSize?: Maybe<PaSize>
-  /** Connection between the RootQuery type and the paSize type */
-  paSizes?: Maybe<RootQueryToPaSizeConnection>
   /** An object of the page Type.  */
   page?: Maybe<Page>
   /**
@@ -12389,36 +11319,6 @@ export type RootQueryOrdersArgs = {
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
   where?: Maybe<RootQueryToOrderConnectionWhereArgs>
-}
-
-/** The root entry point into the Graph */
-export type RootQueryPaColorArgs = {
-  id: Scalars['ID']
-  idType?: Maybe<PaColorIdType>
-}
-
-/** The root entry point into the Graph */
-export type RootQueryPaColorsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<RootQueryToPaColorConnectionWhereArgs>
-}
-
-/** The root entry point into the Graph */
-export type RootQueryPaSizeArgs = {
-  id: Scalars['ID']
-  idType?: Maybe<PaSizeIdType>
-}
-
-/** The root entry point into the Graph */
-export type RootQueryPaSizesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<RootQueryToPaSizeConnectionWhereArgs>
 }
 
 /** The root entry point into the Graph */
@@ -13348,134 +12248,6 @@ export type RootQueryToOrderConnectionWhereArgs = {
   statuses?: Maybe<Array<Maybe<OrderStatusEnum>>>
 }
 
-/** Connection between the RootQuery type and the paColor type */
-export type RootQueryToPaColorConnection = {
-  __typename?: 'RootQueryToPaColorConnection'
-  /** Edges for the RootQueryToPaColorConnection connection */
-  edges?: Maybe<Array<Maybe<RootQueryToPaColorConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<PaColor>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type RootQueryToPaColorConnectionEdge = {
-  __typename?: 'RootQueryToPaColorConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<PaColor>
-}
-
-/** Arguments for filtering the RootQueryToPaColorConnection connection */
-export type RootQueryToPaColorConnectionWhereArgs = {
-  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
-  cacheDomain?: Maybe<Scalars['String']>
-  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
-  childOf?: Maybe<Scalars['Int']>
-  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
-  childless?: Maybe<Scalars['Boolean']>
-  /** Retrieve terms where the description is LIKE the input value. Default empty. */
-  descriptionLike?: Maybe<Scalars['String']>
-  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
-  exclude?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
-  excludeTree?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
-  hideEmpty?: Maybe<Scalars['Boolean']>
-  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
-  hierarchical?: Maybe<Scalars['Boolean']>
-  /** Array of term ids to include. Default empty array. */
-  include?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of names to return term(s) for. Default empty. */
-  name?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Retrieve terms where the name is LIKE the input value. Default empty. */
-  nameLike?: Maybe<Scalars['String']>
-  /** Array of object IDs. Results will be limited to terms associated with these objects. */
-  objectIds?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Direction the connection should be ordered in */
-  order?: Maybe<OrderEnum>
-  /** Field(s) to order terms by. Defaults to 'name'. */
-  orderby?: Maybe<TermObjectsConnectionOrderbyEnum>
-  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
-  padCounts?: Maybe<Scalars['Boolean']>
-  /** Parent term ID to retrieve direct-child terms of. Default empty. */
-  parent?: Maybe<Scalars['Int']>
-  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
-  search?: Maybe<Scalars['String']>
-  /** Array of slugs to return term(s) for. Default empty. */
-  slug?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to prime meta caches for matched terms. Default true. */
-  updateTermMetaCache?: Maybe<Scalars['Boolean']>
-}
-
-/** Connection between the RootQuery type and the paSize type */
-export type RootQueryToPaSizeConnection = {
-  __typename?: 'RootQueryToPaSizeConnection'
-  /** Edges for the RootQueryToPaSizeConnection connection */
-  edges?: Maybe<Array<Maybe<RootQueryToPaSizeConnectionEdge>>>
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<PaSize>>>
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>
-}
-
-/** An edge in a connection */
-export type RootQueryToPaSizeConnectionEdge = {
-  __typename?: 'RootQueryToPaSizeConnectionEdge'
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>
-  /** The item at the end of the edge */
-  node?: Maybe<PaSize>
-}
-
-/** Arguments for filtering the RootQueryToPaSizeConnection connection */
-export type RootQueryToPaSizeConnectionWhereArgs = {
-  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
-  cacheDomain?: Maybe<Scalars['String']>
-  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
-  childOf?: Maybe<Scalars['Int']>
-  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
-  childless?: Maybe<Scalars['Boolean']>
-  /** Retrieve terms where the description is LIKE the input value. Default empty. */
-  descriptionLike?: Maybe<Scalars['String']>
-  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
-  exclude?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
-  excludeTree?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
-  hideEmpty?: Maybe<Scalars['Boolean']>
-  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
-  hierarchical?: Maybe<Scalars['Boolean']>
-  /** Array of term ids to include. Default empty array. */
-  include?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Array of names to return term(s) for. Default empty. */
-  name?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Retrieve terms where the name is LIKE the input value. Default empty. */
-  nameLike?: Maybe<Scalars['String']>
-  /** Array of object IDs. Results will be limited to terms associated with these objects. */
-  objectIds?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Direction the connection should be ordered in */
-  order?: Maybe<OrderEnum>
-  /** Field(s) to order terms by. Defaults to 'name'. */
-  orderby?: Maybe<TermObjectsConnectionOrderbyEnum>
-  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
-  padCounts?: Maybe<Scalars['Boolean']>
-  /** Parent term ID to retrieve direct-child terms of. Default empty. */
-  parent?: Maybe<Scalars['Int']>
-  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
-  search?: Maybe<Scalars['String']>
-  /** Array of slugs to return term(s) for. Default empty. */
-  slug?: Maybe<Array<Maybe<Scalars['String']>>>
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: Maybe<Array<Maybe<Scalars['ID']>>>
-  /** Whether to prime meta caches for matched terms. Default true. */
-  updateTermMetaCache?: Maybe<Scalars['Boolean']>
-}
-
 /** Connection between the RootQuery type and the page type */
 export type RootQueryToPageConnection = {
   __typename?: 'RootQueryToPageConnection'
@@ -13888,6 +12660,8 @@ export type RootQueryToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -14915,10 +13689,6 @@ export type SimpleProduct = Node &
     name?: Maybe<Scalars['String']>
     /** Is product on sale? */
     onSale?: Maybe<Scalars['Boolean']>
-    /** Connection between the Product type and the paColor type */
-    paColors?: Maybe<ProductToPaColorConnection>
-    /** Connection between the Product type and the paSize type */
-    paSizes?: Maybe<ProductToPaSizeConnection>
     /** Parent product */
     parent?: Maybe<Product>
     /** The database id of the preview node */
@@ -15079,24 +13849,6 @@ export type SimpleProductMetaDataArgs = {
   key?: Maybe<Scalars['String']>
   keysIn?: Maybe<Array<Maybe<Scalars['String']>>>
   multiple?: Maybe<Scalars['Boolean']>
-}
-
-/** A product object */
-export type SimpleProductPaColorsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaColorConnectionWhereArgs>
-}
-
-/** A product object */
-export type SimpleProductPaSizesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaSizeConnectionWhereArgs>
 }
 
 /** A product object */
@@ -15277,6 +14029,8 @@ export type SimpleProductToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -15722,10 +14476,6 @@ export type TaxonomyConnectedContentTypesArgs = {
 export enum TaxonomyEnum {
   /** Taxonomy enum category */
   Category = 'CATEGORY',
-  /** Taxonomy enum pa_color */
-  Pacolor = 'PACOLOR',
-  /** Taxonomy enum pa_size */
-  Pasize = 'PASIZE',
   /** Taxonomy enum post_format */
   Postformat = 'POSTFORMAT',
   /** Taxonomy enum product_cat */
@@ -16243,56 +14993,6 @@ export type UpdateOrderPayload = {
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']>
   order?: Maybe<Order>
-}
-
-/** Input for the UpdatePaColor mutation */
-export type UpdatePaColorInput = {
-  /** The slug that the pa_color will be an alias of */
-  aliasOf?: Maybe<Scalars['String']>
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The description of the pa_color object */
-  description?: Maybe<Scalars['String']>
-  /** The ID of the paColor object to update */
-  id: Scalars['ID']
-  /** The name of the pa_color object to mutate */
-  name?: Maybe<Scalars['String']>
-  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
-  slug?: Maybe<Scalars['String']>
-}
-
-/** The payload for the UpdatePaColor mutation */
-export type UpdatePaColorPayload = {
-  __typename?: 'UpdatePaColorPayload'
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The created pa_color */
-  paColor?: Maybe<PaColor>
-}
-
-/** Input for the UpdatePaSize mutation */
-export type UpdatePaSizeInput = {
-  /** The slug that the pa_size will be an alias of */
-  aliasOf?: Maybe<Scalars['String']>
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The description of the pa_size object */
-  description?: Maybe<Scalars['String']>
-  /** The ID of the paSize object to update */
-  id: Scalars['ID']
-  /** The name of the pa_size object to mutate */
-  name?: Maybe<Scalars['String']>
-  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
-  slug?: Maybe<Scalars['String']>
-}
-
-/** The payload for the UpdatePaSize mutation */
-export type UpdatePaSizePayload = {
-  __typename?: 'UpdatePaSizePayload'
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>
-  /** The created pa_size */
-  paSize?: Maybe<PaSize>
 }
 
 /** Input for the updatePage mutation */
@@ -17476,10 +16176,6 @@ export type VariableProduct = Node &
     name?: Maybe<Scalars['String']>
     /** Is product on sale? */
     onSale?: Maybe<Scalars['Boolean']>
-    /** Connection between the Product type and the paColor type */
-    paColors?: Maybe<ProductToPaColorConnection>
-    /** Connection between the Product type and the paSize type */
-    paSizes?: Maybe<ProductToPaSizeConnection>
     /** Parent product */
     parent?: Maybe<Product>
     /** The database id of the preview node */
@@ -17640,24 +16336,6 @@ export type VariableProductMetaDataArgs = {
   key?: Maybe<Scalars['String']>
   keysIn?: Maybe<Array<Maybe<Scalars['String']>>>
   multiple?: Maybe<Scalars['Boolean']>
-}
-
-/** A variable product object */
-export type VariableProductPaColorsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaColorConnectionWhereArgs>
-}
-
-/** A variable product object */
-export type VariableProductPaSizesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  where?: Maybe<ProductToPaSizeConnectionWhereArgs>
 }
 
 /** A variable product object */
@@ -17847,6 +16525,8 @@ export type VariableProductToProductConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -17945,6 +16625,8 @@ export type VariableProductToProductVariationConnectionWhereArgs = {
   tagIn?: Maybe<Array<Maybe<Scalars['String']>>>
   /** Limit result set to products not assigned to a specific group of tags by name. */
   tagNotIn?: Maybe<Array<Maybe<Scalars['String']>>>
+  /** Limit result set to products with a specific tax class. */
+  taxClass?: Maybe<TaxClassEnum>
   /** Limit result set with complex set of taxonomy filters. */
   taxonomyFilter?: Maybe<ProductTaxonomyInput>
   /** Limit result set to products assigned a specific type. */
@@ -18204,6 +16886,33 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars['Boolean']>
 }
 
+export type GetAllProductPathsQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>
+}>
+
+export type GetAllProductPathsQuery = { __typename?: 'RootQuery' } & {
+  products?: Maybe<
+    { __typename?: 'RootQueryToProductConnection' } & {
+      nodes?: Maybe<
+        Array<
+          Maybe<
+            | ({ __typename?: 'ExternalProduct' } & Pick<
+                ExternalProduct,
+                'slug'
+              >)
+            | ({ __typename?: 'GroupProduct' } & Pick<GroupProduct, 'slug'>)
+            | ({ __typename?: 'SimpleProduct' } & Pick<SimpleProduct, 'slug'>)
+            | ({ __typename?: 'VariableProduct' } & Pick<
+                VariableProduct,
+                'slug'
+              >)
+          >
+        >
+      >
+    }
+  >
+}
+
 export type GetAllProductsQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>
 }>
@@ -18396,30 +17105,7 @@ export type GetAllProductsQuery = { __typename?: 'RootQuery' } & {
                             { __typename?: 'ProductVariation' } & Pick<
                               ProductVariation,
                               'price' | 'regularPrice' | 'salePrice'
-                            > & {
-                                attributes?: Maybe<
-                                  {
-                                    __typename?: 'ProductVariationToVariationAttributeConnection'
-                                  } & {
-                                    nodes?: Maybe<
-                                      Array<
-                                        Maybe<
-                                          {
-                                            __typename?: 'VariationAttribute'
-                                          } & Pick<
-                                            VariationAttribute,
-                                            | 'name'
-                                            | 'value'
-                                            | 'attributeId'
-                                            | 'label'
-                                            | 'id'
-                                          >
-                                        >
-                                      >
-                                    >
-                                  }
-                                >
-                              }
+                            >
                           >
                         >
                       >

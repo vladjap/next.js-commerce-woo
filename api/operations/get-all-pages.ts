@@ -12,6 +12,7 @@ export default function getAllPagesOperation() {
     preview?: boolean
   }): Promise<GetAllPagesResult> {
 
+    console.log('dadada')
     return Promise.resolve({
       pages: [],
     })

@@ -1,6 +1,6 @@
 {
   "schema": {
-    "http://store-front.local/graphql": {}
+    "http://appup.xyz/graphql": {}
   },
   "documents": [
     {
